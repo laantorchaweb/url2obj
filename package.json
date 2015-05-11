@@ -1,0 +1,42 @@
+{
+  "name": "url2obj",
+  "version": "0.0.0",
+  "description": "It will take a URL and the object keys as arguments and convert it to an object. It support query params by using the names as obj keys.",
+  "homepage": "http://laantorcha.net",
+  "author": {
+    "name": "Sebastian Baroni",
+    "email": "laantorchaweb@gmail.com",
+    "url": "http://laantorcha.net"
+  },
+  "repository": "laantorchaweb/url2obj",
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "url2obj",
+    "url2obj",
+    "url",
+    "parse",
+    "objects",
+    "params"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "^9.0.3",
+    "chai": "^2.3.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-cli": "^1.12.0",
+    "jshint-stylish": "^1.0.1",
+    "load-grunt-tasks": "^3.1.0",
+    "time-grunt": "^1.1.0",
+    "underscore": "^1.8.3"
+  },
+  "scripts": {
+    "test": "grunt",
+    "browser": "browserify index.js > browser.js"
+  }
+}
