@@ -15,15 +15,27 @@ $ npm install --save url2obj
 ```js
 var url2obj = require('url2obj');
 
-var obj = url2obj( '/4/api/users/2?sort=desc&limit=10', ['version', 'collection', 'id'], 'api' );
+var obj1 = url2obj( '/4/api/users/2', ['version', 'collection', 'id'], 'api' );
 
-expect( obj ).to.deep.equal({
-version: "4",
-collection: "users",
-id: "2",
-sort: "desc",
-limit: "10"
-});
+
+// This will return an object like this:
+{
+  version: "4",
+  collection: "users",
+  id: "2"
+}
+
+var obj2 = url2obj( '/4/api/users/2?sort=desc&limit=10', ['version', 'collection', 'id'], 'api' );
+
+
+// If you have query params on your url it will use the names as keys:
+{
+  version: "4",
+  collection: "users",
+  id: "2",
+  sort: "desc",
+  limit: "10"
+}
 ```
 
 ```sh
