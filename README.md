@@ -15,7 +15,15 @@ $ npm install --save url2obj
 ```js
 var url2obj = require('url2obj');
 
-url2obj('Rainbow');
+var obj = url2obj( '/4/api/users/2?sort=desc&limit=10', ['version', 'collection', 'id'], 'api' );
+
+expect( obj ).to.deep.equal({
+version: "4",
+collection: "users",
+id: "2",
+sort: "desc",
+limit: "10"
+});
 ```
 
 ```sh
