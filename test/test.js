@@ -5,21 +5,21 @@ var expect  = require('chai').expect,
 describe('url2obj node module', function () {
 
   it('should return an obj if enters an url', function () {
-      var obj = url2obj( '/6/api/listings/3', ['version', 'collection', 'id'], 'api' );
+      var obj = url2obj( '/6/api/listings/3', ['version', 'api', 'collection', 'id'], ['api'] );
 
       expect( obj ).to.be.a('object');
 
   });
 
   it('should return an obj if enters an url with query params', function () {
-      var obj = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'collection', 'id'], 'api' );
+      var obj = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'api', 'collection', 'id'], ['api'] );
 
       expect( obj ).to.be.a('object');
 
   });
 
   it('should return an obj with keys and values', function () {
-      var obj = url2obj( '/6/api/listings/3', ['version', 'collection', 'id'], 'api' );
+      var obj = url2obj( '/6/api/listings/3', ['version', 'api', 'collection', 'id'], ['api'] );
 
       expect( obj ).to.deep.equal({
         version: "6",
@@ -30,7 +30,7 @@ describe('url2obj node module', function () {
   });
 
   it('should return an obj with keys and values and use query params as input', function () {
-      var obj = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'collection', 'id'], 'api' );
+      var obj = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'api', 'collection', 'id'], ['api'] );
 
       expect( obj ).to.deep.equal({
         version: "6",
@@ -43,7 +43,7 @@ describe('url2obj node module', function () {
   });
 
   it('should return an obj with without the omitted keys', function () {
-      var obj = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'collection', 'id'], ['version', 'collection', 'api'] );
+      var obj = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'api', 'collection', 'id'], ['version', 'api', 'collection'] );
 
       expect( obj ).to.deep.equal({
         id: "3",

@@ -5,6 +5,9 @@ URL2OBJ
 
 > It will take a URL and the object keys as arguments and convert it to an object. It support query params by using the names as obj keys.
 
+```
+url2obj( url, object keys, omit certain keys );
+```
 
 ## Install
 
@@ -18,7 +21,7 @@ $ npm install --save url2obj
 ```js
 var url2obj = require('url2obj');
 
-var obj1 = url2obj( '/4/api/users/2', ['version', 'collection', 'id'], 'api' );
+var obj1 = url2obj( '/4/api/users/2', ['version', 'api', 'collection', 'id'], ['api'] );
 
 
 // This will return an object like this:
@@ -28,7 +31,7 @@ var obj1 = url2obj( '/4/api/users/2', ['version', 'collection', 'id'], 'api' );
   id: "2"
 }
 
-var obj2 = url2obj( '/4/api/users/2?sort=desc&limit=10', ['version', 'collection', 'id'], 'api' );
+var obj2 = url2obj( '/4/api/users/2?sort=desc&limit=10', ['version', 'api', 'collection', 'id'], ['api'] );
 
 
 // If you have query params on your url it will use the names as keys:

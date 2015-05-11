@@ -1,7 +1,7 @@
 'use strict';
 var _ = require('underscore');
-var keysPath    = ['version', 'api', 'collection', 'id'],
-    omit        = [],
+var keysPath    = null,
+    omit        = null,
     keysParams  = [],
     valueParams = [];
 
@@ -15,8 +15,10 @@ function handleParams ( params ) {
     var propNames = params.split('&');
 
     _.each( propNames, function ( val ) {
+
         keysParams.push( val.split('=')[0] );
         valueParams.push( val.split('=')[1] );
+
     });
 }
 
@@ -29,7 +31,8 @@ function getValues ( path, params ) {
         objParams = _.object( keysParams, valueParams );
 
     }
-
+    console.log( keysPath);
+    console.log( omit );
     objPath   = _.object( keysPath, path.split('/'));
 
     return _.omit( _.extend( objPath, objParams), omit );
@@ -43,7 +46,8 @@ module.exports = function ( url, keys, _omit ) {
     var path   = decode( url.split('?')[0].substring(1) ),
         params = decode( url.split('?')[1] );
 
-    omit = _omit;
+    keysPath = keys;
+    omit     = _omit;
 
     return getValues( path, params );
 };
