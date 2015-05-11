@@ -1,5 +1,8 @@
 #  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
+URL2OBJ
+=======
+
 > It will take a URL and the object keys as arguments and convert it to an object. It support query params by using the names as obj keys.
 
 
