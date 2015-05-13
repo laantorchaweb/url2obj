@@ -4,24 +4,29 @@ var expect  = require('chai').expect,
 
 describe('url2obj node module', function () {
 
-  it('should return an obj if enters an url', function () {
-      var obj = url2obj( '/6/api/listings/3', ['version', 'api', 'collection', 'id'], ['api'] );
+  it('should return an obj if enters proper arguments', function () {
+      var obj1 = url2obj( '/6/api/listings/3', ['version', 'api', 'collection', 'id'], ['api'] );
+      var obj2 = url2obj( '/6/api/listings/3', "/:id/api/:collection/:id" );
 
-      expect( obj ).to.be.a('object');
+      expect( obj1 ).to.be.a('object');
+      expect( obj2 ).to.be.a('object');
 
   });
 
   it('should return an obj if enters an url with query params', function () {
-      var obj = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'api', 'collection', 'id'], ['api'] );
+      var obj1 = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'api', 'collection', 'id'], ['api'] );
+      var obj2 = url2obj( '/6/api/listings/3?sort=desc&limit=10', "/:id/api/:collection/:id" );
 
-      expect( obj ).to.be.a('object');
+      expect( obj1 ).to.be.a('object');
+      expect( obj2 ).to.be.a('object');
 
   });
 
   it('should return an obj with keys and values', function () {
-      var obj = url2obj( '/6/api/listings/3', ['version', 'api', 'collection', 'id'], ['api'] );
+      var obj1 = url2obj( '/6/api/listings/3', ['version', 'api', 'collection', 'id'], ['api'] );
+      var obj2 = url2obj( '/6/api/listings/3', "/:id/api/:collection/:id" );
 
-      expect( obj ).to.deep.equal({
+      expect( obj1, obj2 ).to.deep.equal({
         version: "6",
         collection: "listings",
         id: "3"
@@ -30,9 +35,10 @@ describe('url2obj node module', function () {
   });
 
   it('should return an obj with keys and values and use query params as input', function () {
-      var obj = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'api', 'collection', 'id'], ['api'] );
+      var obj1 = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'api', 'collection', 'id'], ['api'] );
+      var obj2 = url2obj( '/6/api/listings/3?sort=desc&limit=10', "/:id/api/:collection/:id" );
 
-      expect( obj ).to.deep.equal({
+      expect( obj1, obj2 ).to.deep.equal({
         version: "6",
         collection: "listings",
         id: "3",
@@ -43,9 +49,10 @@ describe('url2obj node module', function () {
   });
 
   it('should return an obj with without the omitted keys', function () {
-      var obj = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'api', 'collection', 'id'], ['version', 'api', 'collection'] );
+      var obj1 = url2obj( '/6/api/listings/3?sort=desc&limit=10', ['version', 'api', 'collection', 'id'], ['version', 'api', 'collection'] );
+      var obj2 = url2obj( '/6/api/listings/3?sort=desc&limit=10', "/id/api/collection/:id" );
 
-      expect( obj ).to.deep.equal({
+      expect( obj1, obj2 ).to.deep.equal({
         id: "3",
         sort: "desc",
         limit: "10"
@@ -56,7 +63,7 @@ describe('url2obj node module', function () {
   it('should throw and error if no argument is passed', function () {
       var obj = url2obj();
 
-      expect( obj ).to.be.equal('you must pass an url and an array of keys');
+      expect( obj ).to.be.equal('you must pass an url and an array of keys or url format string');
 
   });
 
