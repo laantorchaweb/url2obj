@@ -19,7 +19,7 @@ $ npm install --save url2obj
 
 ## Usage
 
-# first argument is the url that you want to convert, then you can pass an array of keys and then an array of the keys that you want to omit on your obj
+first argument is the url that you want to convert, then you can pass an array of keys and then an array of the keys that you want to omit on your obj
 
 ```js
 var url2obj = require('url2obj');
@@ -47,7 +47,7 @@ var obj2 = url2obj( '/4/api/users/2?sort=desc&limit=10', ['version', 'api', 'col
 }
 ```
 
-# you have the option to pass only two arguments being the first on the url and the second one the format of your url it will take the dynamic params as keys and omit the non dynamic ones.
+you have the option to pass only two arguments being the first on the url and the second one the format of your url, it will take the dynamic params as keys and omit the non dynamic ones.
 
 ```js
 var url2obj = require('url2obj');
