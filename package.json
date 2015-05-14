@@ -1,6 +1,6 @@
 {
   "name": "url2obj",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "It will take a URL and the object keys as arguments and convert it to an object. It support query params by using the names as obj keys.",
   "homepage": "http://laantorcha.net",
   "author": {
