@@ -47,12 +47,12 @@ var obj2 = url2obj( '/4/api/users/2?sort=desc&limit=10', ['version', 'api', 'col
 }
 ```
 
-you have the option to pass only two arguments being the first on the url and the second one the format of your url, it will take the dynamic params as keys and omit the non dynamic ones.
+you have the option to pass only two arguments being the first one the url and the second one the format of your url, it will take the dynamic params as keys and omit the non dynamic ones.
 
 ```js
 var url2obj = require('url2obj');
 
-var obj1 = url2obj( '/6/api/listings/3', "/:id/api/:collection/:id" );
+var obj1 = url2obj( '/6/api/listings/3', "/:version/api/:collection/:id" );
 
 
 // This will return an object like this:
@@ -62,7 +62,7 @@ var obj1 = url2obj( '/6/api/listings/3', "/:id/api/:collection/:id" );
   id: "2"
 }
 
-var obj2 = url2obj( '/6/api/listings/3?sort=desc&limit=10', "/id/api/collection/:id" );
+var obj2 = url2obj( '/6/api/listings/3?sort=desc&limit=10', "/:version/api/:collection/:id" );
 
 
 // If you have query params on your url it will use the names as keys:
