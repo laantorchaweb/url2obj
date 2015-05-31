@@ -8,6 +8,7 @@ It support query params by using the names as obj keys.
 
 ```
 url2obj( url, object keys, omit certain keys );
+url2obj( url, format url string);
 ```
 
 ## Install
